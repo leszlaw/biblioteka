@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.HashMap;
 
 public class Biblioteka {
 
@@ -15,7 +16,8 @@ public class Biblioteka {
         try {
             //STEP 2: Register JDBC driver
             Class.forName(JDBC_DRIVER);
-
+            HashMap map=new HashMap<String,String>();
+            
             //STEP 3: Open a connection
             System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
