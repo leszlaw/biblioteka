@@ -1,14 +1,16 @@
+package main;
+
 import java.sql.*;
 import java.util.HashMap;
 
 public class Biblioteka {
 
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://116.202.211.83:3306/db_62692";
+    public static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    public static final String DB_URL = "jdbc:mysql://116.202.211.83:3306/db_62692";
 
     //  Database credentials
-    static final String USER = "db_62692";
-    static final String PASS = "NwLurZQOTOnY";
+    public static final String USER = "db_62692";
+    public static final String PASS = "NwLurZQOTOnY";
 
     public static void main(String[] args) {
         Connection conn = null;
