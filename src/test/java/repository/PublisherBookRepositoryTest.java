@@ -1,0 +1,66 @@
+package test.java.repository;
+
+import main.java.factory.TestStatementBuilder;
+import main.java.model.PublisherBook;
+import main.java.repository.PublisherBookRepository;
+import org.junit.Test;
+
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+
+public class PublisherBookRepositoryTest {
+
+    final Statement statement = TestStatementBuilder.getInstance().createStatement();
+
+    final PublisherBookRepository publisherBookRepository = new PublisherBookRepository(statement);
+
+    @Test
+    public void shouldSavePublisherBook() throws SQLException {
+        //given
+        PublisherBook publisherBook = new PublisherBook();
+        publisherBook.publisherId = 1;
+        publisherBook.img = "img";
+        publisherBook.isbn = 1111111111111l;
+        publisherBook.bookId=1;
+        publisherBook.pages=12;
+        //when
+        publisherBookRepository.save(publisherBook);
+        //then
+        List<PublisherBook> publisherBooks = publisherBookRepository.findByBookId(1);
+        assertEquals(publisherBooks.size(),2);
+        assertEquals(publisherBooks.get(1).isbn.longValue(),1111111111111l);
+    }
+
+    @Test
+    public void shouldFindPublisherBook() throws SQLException {
+        //when
+        PublisherBook publisherBook = publisherBookRepository.findById(1);
+        //then
+        assertEquals(publisherBook.id,1);
+        assertEquals(publisherBook.bookId,1);
+        assertEquals(publisherBook.publisherId,1);
+        assertEquals(publisherBook.img,"https://static4.redcart.pl/templates/images/thumb/7435/1500/1500/pl/0/templates/images/products/7435/526066f185eaac903d5d36fd4fbf83a7.jpg");
+        assertEquals(publisherBook.pages.intValue(),10);
+        assertEquals(publisherBook.isbn.longValue(),1122222222222l);
+    }
+
+    @Test
+    public void shouldUpdatePublisherBook() throws SQLException {
+        //given
+        PublisherBook publisherBook1 = publisherBookRepository.findById(2);
+        publisherBook1.bookId=3;
+        publisherBook1.publisherId=3;
+        publisherBook1.img="123";
+        publisherBook1.pages=1;
+        publisherBook1.isbn=1111111111111l;
+        //when
+        publisherBookRepository.update(publisherBook1);
+        //then
+        PublisherBook publisherBook2 = publisherBookRepository.findById(2);
+        assertEquals(publisherBook1.toString(),publisherBook2.toString());
+    }
+
+}

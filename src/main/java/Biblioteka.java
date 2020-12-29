@@ -1,4 +1,6 @@
-package main;
+package main.java;
+
+import main.java.factory.TestStatementBuilder;
 
 import java.sql.*;
 import java.util.HashMap;
@@ -16,6 +18,7 @@ public class Biblioteka {
         Connection conn = null;
         Statement stmt = null;
         try {
+            new TestStatementBuilder();
             //STEP 2: Register JDBC driver
             Class.forName(JDBC_DRIVER);
             HashMap map=new HashMap<String,String>();

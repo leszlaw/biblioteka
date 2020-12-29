@@ -1,11 +1,11 @@
-package main.factory;
+package main.java.factory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class LibraryStatementBuilder {
+public class LibraryStatementBuilder implements StatementBuilder{
 
     private String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private String DB_URL = "jdbc:mysql://116.202.211.83:3306/db_62692";
