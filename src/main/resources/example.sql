@@ -117,11 +117,11 @@ INSERT INTO PublisherBook VALUES (3,3,3,'https://static4.redcart.pl/templates/im
 INSERT INTO PublisherBook VALUES (4,4,4,'https://static4.redcart.pl/templates/images/thumb/7435/1500/1500/pl/0/templates/images/products/7435/526066f185eaac903d5d36fd4fbf83a7.jpg',10,100);
 INSERT INTO PublisherBook VALUES (5,5,5,'https://static4.redcart.pl/templates/images/thumb/7435/1500/1500/pl/0/templates/images/products/7435/526066f185eaac903d5d36fd4fbf83a7.jpg',1000,10);
 
-INSERT INTO BookCopy(id, publisherbook_id, state_id, description, signature) VALUES(1, 1, 1, 'opis1', 'Kowalski');
-INSERT INTO BookCopy(id, publisherbook_id, state_id, description, signature) VALUES(2, 2, 2, 'opis2', 'Nowak');
-INSERT INTO BookCopy(id, publisherbook_id, state_id, description, signature) VALUES(3, 3, 3, 'opis3', 'Brzęczyszczykiewicz');
-INSERT INTO BookCopy(id, publisherbook_id, state_id, description, signature) VALUES(4, 4, 4, 'opis4', 'Łuczak');
-INSERT INTO BookCopy(id, publisherbook_id, state_id, description, signature) VALUES(5, 5, 5, 'opis5', 'Piłsudski');
+INSERT INTO BookCopy(id, publisherbook_id, state_id, description, signature) VALUES(1, 1, 1, 'opis1', 1111111111);
+INSERT INTO BookCopy(id, publisherbook_id, state_id, description, signature) VALUES(2, 2, 2, 'opis2', 1231231231);
+INSERT INTO BookCopy(id, publisherbook_id, state_id, description, signature) VALUES(3, 3, 3, 'opis3', 1231231232);
+INSERT INTO BookCopy(id, publisherbook_id, state_id, description, signature) VALUES(4, 4, 4, 'opis4', 1111111112);
+INSERT INTO BookCopy(id, publisherbook_id, state_id, description, signature) VALUES(5, 5, 5, 'opis5', 1111111113);
 
 INSERT INTO _User VALUES(1, 'Michał', 'Miller', '1900-07-19', 1, 1, 1, 1);
 INSERT INTO _User VALUES(2, 'Maciej', 'Fuks', '1200-02-19', 2, 2, 2, 2);

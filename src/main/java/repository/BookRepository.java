@@ -106,6 +106,16 @@ public class BookRepository extends Repository {
         return books;
     }
 
+    public List<Book> findBooksByPublisherId(int publisherId) throws SQLException {
+        String sql = "SELECT Book.id, Book.title, Book.description, Book.release_date FROM PublisherBook " +
+                "INNER JOIN Book ON Book.id = PublisherBook.book_id " +
+                "INNER JOIN Publisher ON Publisher.id = PublisherBook.publisher_id " +
+                "WHERE Publisher.id = " + publisherId + ";";
+
+        List<Book> books = getBooks(sql);
+        return books;
+    }
+
 
 }
 

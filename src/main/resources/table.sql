@@ -89,7 +89,7 @@ id integer(10) NOT NULL UNIQUE AUTO_INCREMENT,
 publisherbook_id integer(10) NOT NULL, 
 state_id integer(10) NOT NULL,
 description varchar(10000), 
-signature integer(10),
+signature decimal(10),
 PRIMARY KEY (id),
 FOREIGN KEY(publisherbook_id) REFERENCES PublisherBook(id),
 FOREIGN KEY(state_id) REFERENCES State(id)

@@ -2,15 +2,17 @@ package main.java.model;
 
 public class BookCopy {
 
+    public int id;
     public int publisherBookId;
     public int stateId;
     public String description;
-    public Integer signature;
+    public Long signature;
 
     @Override
     public String toString() {
         return "BookCopy{" +
-                "publisherBookId=" + publisherBookId +
+                "id=" + id +
+                ", publisherBookId=" + publisherBookId +
                 ", stateId=" + stateId +
                 ", description='" + description + '\'' +
                 ", signature=" + signature +

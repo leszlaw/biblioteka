@@ -54,7 +54,6 @@ public class BookRepositoryTest {
         book1.title = "Lallka";
         book1.description="zmieniono";
         book1.releaseDate = "2020-11-12";
-        System.out.println(book1.releaseDate.toString());
         //when
         bookRepository.update(book1);
         //then
@@ -77,7 +76,14 @@ public class BookRepositoryTest {
         //then
         assertEquals(bookRepository
                 .selectThatBeginWith("Wojna","wojna").size(),0);
+    }
 
+    @Test
+    public void shouldReturnELAYPublisherBooks() throws SQLException {
+        //when
+        List<Book> books = bookRepository.findBooksByPublisherId(4);
+        //then
+        assertEquals(books.size(),1);
     }
 
 }
