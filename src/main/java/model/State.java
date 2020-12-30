@@ -3,7 +3,7 @@ package main.java.model;
 public class State {
 
     public int id;
-    public int rate;
+    public String rate;
 
     @Override
     public String toString() {

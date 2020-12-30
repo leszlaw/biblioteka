@@ -38,8 +38,6 @@ public class PublisherBookRepository extends Repository{
 
         String sql = sb.toString();
 
-        System.out.println(sql);
-
         statement.execute(sql);
     }
 
