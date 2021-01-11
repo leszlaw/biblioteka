@@ -31,9 +31,13 @@ public class BookRepository extends Repository {
 
         if (book.description != null)
             sb.append(", description =\"" + book.description + "\" ");
+        else
+            sb.append(", description = NULL");
 
         if (book.releaseDate != null)
             sb.append(", release_date =\"" + book.releaseDate + "\" ");
+        else
+            sb.append(", release_date = NULL ");
 
         sb.append("WHERE id = " + book.id + ";");
 

@@ -21,8 +21,8 @@ PRIMARY KEY (id)
 
 CREATE TABLE UserAuthentication(
     id int(10) NOT NULL UNIQUE AUTO_INCREMENT,
-    nick varchar(64) NOT NULL,
-    login varchar(64) NOT NULL,
+    nick varchar(64) NOT NULL UNIQUE,
+    login varchar(64) NOT NULL UNIQUE,
     password varchar(64) NOT NULL,
     PRIMARY KEY(id)
 );
@@ -47,7 +47,7 @@ CREATE TABLE Author(
 
 CREATE TABLE State (
 	id int(10) NOT NULL UNIQUE AUTO_INCREMENT,
-	rate varchar(10) NOT NULL UNIQUE
+	rate varchar(20) NOT NULL UNIQUE
 	);
 	
 CREATE TABLE Book (

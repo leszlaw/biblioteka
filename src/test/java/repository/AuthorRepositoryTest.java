@@ -25,14 +25,14 @@ public class AuthorRepositoryTest{
         assertEquals(authors.size(),1);
         authorRepository.giveBookToAuthorById(1,2);
         authors = authorRepository.findByBookId(1);
-        assertEquals(authors.size(),2);
+        assertEquals(2,authors.size());
     }
 
     @Test
     public void shouldFind_NicolaTesla_ByNameAndLastName() throws SQLException {
         List<Author> authors = authorRepository.findByNameAndLastName("Ni", "Te");
         assertEquals(authors.get(0).name,"Nicola");
-        assertEquals(authors.get(0).lastName,"Tesla");
+        assertEquals("Tesla",authors.get(0).lastName);
     }
 
 }
