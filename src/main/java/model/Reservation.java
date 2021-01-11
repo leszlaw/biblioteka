@@ -5,16 +5,15 @@ public class Reservation {
 	public int id;
 	public String date;
 	public int userId;
-	public int bookcopyId;
-	
+	public int bookCopyId;
+
 	@Override
 	public String toString() {
-		return "Reservation [id=" + id +
-				", date=" + date +
+		return "Reservation{" +
+				"id=" + id +
+				", date='" + date + '\'' +
 				", userId=" + userId +
-				", bookcopyId=" + bookcopyId + "]";
+				", bookCopyId=" + bookCopyId +
+				'}';
 	}
-	
-	
-
 }

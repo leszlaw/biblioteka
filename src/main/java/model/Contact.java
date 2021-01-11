@@ -4,15 +4,14 @@ public class Contact {
 	
 	public int id;
 	public String email;
-	public Integer phone;
-	
+	public Long phone;
+
 	@Override
 	public String toString() {
-		return "Contact [id=" + id +
-				", email=" + email +
-				", phone=" + phone + "]";
+		return "Contact{" +
+				"id=" + id +
+				", email='" + email + '\'' +
+				", phone=" + phone +
+				'}';
 	}
-	
-	
-
 }

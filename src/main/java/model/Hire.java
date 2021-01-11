@@ -7,18 +7,17 @@ public class Hire {
 	public String hireDate;
 	public String deliveryDate;
 	public int userId;
-	public int bookcopyId;
-	
+	public int bookCopyId;
+
 	@Override
 	public String toString() {
-		return "Hire [id=" + id +
-				", returnDate=" + returnDate +
-				", hireDate=" + hireDate + 
-				", deliveryDate=" + deliveryDate +
+		return "Hire{" +
+				"id=" + id +
+				", returnDate='" + returnDate + '\'' +
+				", hireDate='" + hireDate + '\'' +
+				", deliveryDate='" + deliveryDate + '\'' +
 				", userId=" + userId +
-				", bookcopyId=" + bookcopyId + "]";
+				", bookCopyId=" + bookCopyId +
+				'}';
 	}
-	
-	
-
 }

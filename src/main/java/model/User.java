@@ -9,20 +9,19 @@ public class User {
 	public int authId;
 	public int contactId;
 	public int addressId;
-	public int roleID;
-	
+	public int roleId;
+
 	@Override
 	public String toString() {
-		return "User [id=" + id +
-				", name=" + name +
-				", lastName=" + lastName +
-				", date=" + date +
-				", authId=" + authId
-				+ ", contactId=" + contactId +
+		return "User{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", lastName='" + lastName + '\'' +
+				", date='" + date + '\'' +
+				", authId=" + authId +
+				", contactId=" + contactId +
 				", addressId=" + addressId +
-				", roleID=" + roleID + "]";
+				", roleId=" + roleId +
+				'}';
 	}
-	
-	
-
 }

@@ -7,17 +7,15 @@ public class Opinion {
 	public String text;
 	public int userId;
 	public int bookId;
-	
+
 	@Override
 	public String toString() {
-		return "Opinion [id=" + id +
+		return "Opinion{" +
+				"id=" + id +
 				", rate=" + rate +
-				", text=" + text +
+				", text='" + text + '\'' +
 				", userId=" + userId +
-				", bookId=" + bookId
-				+ "]";
+				", bookId=" + bookId +
+				'}';
 	}
-	
-	
-
 }

@@ -6,15 +6,14 @@ public class Message {
 	public String date;
 	public int senderId;
 	public int receiverId;
-	
+
 	@Override
 	public String toString() {
-		return "Message [id=" + id +
-				", date=" + date +
+		return "Message{" +
+				"id=" + id +
+				", date='" + date + '\'' +
 				", senderId=" + senderId +
-				", receiverId=" + receiverId + "]";
+				", receiverId=" + receiverId +
+				'}';
 	}
-	
-	
-
 }

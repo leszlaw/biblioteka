@@ -7,14 +7,16 @@ public class Address {
 	public String street;
 	public String number;
 	public String houseNumber;
+
 	@Override
 	public String toString() {
-		return "Address [id=" + id +
-				", town=" + town +
-				", street=" + street +
-				", number=" + number + 
-				", houseNumber="+houseNumber + "]";
+		return "Address{" +
+				"id=" + id +
+				", town='" + town + '\'' +
+				", street='" + street + '\'' +
+				", number='" + number + '\'' +
+				", houseNumber='" + houseNumber + '\'' +
+				'}';
 	}
-	
-	
+
 }
