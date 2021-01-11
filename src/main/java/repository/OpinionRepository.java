@@ -23,7 +23,6 @@ public class OpinionRepository extends Repository{
             sb.append("NULL,");
         sb.append(opinion.userId + "," + opinion.bookId + ");");
         sql = sb.toString();
-        System.out.println(sql);
         statement.execute(sql);
     }
 
@@ -41,6 +40,11 @@ public class OpinionRepository extends Repository{
             opinions.add(opinion);
         }
         return opinions;
+    }
+
+    public void remove(Opinion opinion) throws SQLException {
+        String sql = "DELETE FROM Opinion WHERE id = " + opinion.id;
+        statement.execute(sql);
     }
 
 }
