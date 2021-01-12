@@ -42,7 +42,8 @@ public class BookCopyRepositoryTest {
         assertEquals(bookCopy.publisherBookId,1);
         assertEquals(bookCopy.stateId,1);
         assertEquals(bookCopy.description,"opis1");
-        assertEquals(bookCopy.signature.longValue(),1111111111l);
+        assertEquals(1111111111l,bookCopy.signature.longValue());
+
     }
 
     @Test

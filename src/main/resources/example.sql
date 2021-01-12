@@ -1,25 +1,25 @@
 START TRANSACTION;
 
 INSERT INTO Address( id, town, street, _number, house_number)
-VALUES (1, 'Warszawa', 'Lipowa', '24', '16');
+VALUES (1, 'Warszawa', 'Lipowa', 24, '16');
 INSERT INTO Address( id, town, street, _number, house_number)
-VALUES (2, 'Gdynia', 'Azaliowa', '10', NULL);
+VALUES (2, 'Gdynia', 'Azaliowa', 10, NULL);
 INSERT INTO Address( id, town, street, _number, house_number)
-VALUES (3, 'Warszawa', 'Lipowa', '5', NULL);
+VALUES (3, 'Warszawa', 'Lipowa', 5, NULL);
 INSERT INTO Address( id, town, street, _number, house_number)
-VALUES (4, 'Warszawa', 'Smutna', '18', '22');
+VALUES (4, 'Warszawa', 'Smutna', 18, '22');
 INSERT INTO Address( id, town, street, _number, house_number)
-VALUES (5, 'Gdynia', 'Radosna', '99', NULL);
+VALUES (5, 'Gdynia', 'Radosna', 99, NULL);
 INSERT INTO Address( id, town, street, _number, house_number)
-VALUES (6, 'Bydgoszcz', 'Ziemniaczana', '1', NULL);
+VALUES (6, 'Bydgoszcz', 'Ziemniaczana', 1, NULL);
 INSERT INTO Address( id, town, street, _number, house_number)
-VALUES (7, 'Legnica', 'Targowicka', '4', '3');
+VALUES (7, 'Legnica', 'Targowicka', 4, '3');
 INSERT INTO Address( id, town, street, _number, house_number)
-VALUES (8, 'Opole', 'Orla', '3', NULL);
+VALUES (8, 'Opole', 'Orla', 3, NULL);
 INSERT INTO Address( id, town, street, _number, house_number)
-VALUES (9, 'Tychy', 'Lisia', '12', '2');
+VALUES (9, 'Tychy', 'Lisia', 12, '2');
 INSERT INTO Address( id, town, street, _number, house_number)
-VALUES (10, 'Sosnowiec', 'Ptasia', '5', NULL);
+VALUES (10, 'Sosnowiec', 'Ptasia', 5, NULL);
 
 INSERT INTO Role( id, role_name)
 VALUES (1, 'pracownik');
@@ -36,6 +36,8 @@ INSERT INTO Contact(id, email, phone)
 VALUES ( 4,NULL ,48505554900 );
 INSERT INTO Contact(id, email, phone)
 VALUES ( 5, 'barbara001@gmail.com' ,48455552789 );
+INSERT INTO Contact(id, email, phone)
+VALUES ( 6, 'kuba@gmail.com' ,48455552744 );
 
 INSERT INTO UserAuthentication(id, nick, login, password)
 VALUES (1, 'Zbychu', 'Zbychu', '1234');
@@ -47,6 +49,8 @@ INSERT INTO UserAuthentication(id, nick, login, password)
 VALUES (4, 'aeopjasdwah', 'vilette444', 'Mojehaslo321');
 INSERT INTO UserAuthentication(id, nick, login, password)
 VALUES (5, 'brokencandle', 'cancersandcrabs', 'LOLOLO');
+INSERT INTO UserAuthentication(id, nick, login, password)
+VALUES (6, 'kubcio', 'kubcio', '123');
 
 INSERT INTO Publisher( id, name)
 VALUES (1, 'Greg' );

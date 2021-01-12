@@ -2,6 +2,7 @@ package main.java.repository;
 
 import main.java.model.BookCopy;
 
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -34,8 +35,12 @@ public class BookCopyRepository extends Repository{
                 ", state_id=" + bookCopy.stateId);
         if(bookCopy.description!=null)
             sb.append(", description =\"" + bookCopy.description + "\"");
+        else
+            sb.append(", description = NULL");
         if(bookCopy.signature!=null)
             sb.append(", signature =" + bookCopy.signature);
+        else
+            sb.append(", signature = NULL");
         sb.append(" WHERE id = " + bookCopy.id +";");
         String sql = sb.toString();
         statement.execute(sql);
@@ -49,13 +54,8 @@ public class BookCopyRepository extends Repository{
     public BookCopy findById(int id) throws SQLException {
         String sql = "SELECT * FROM BookCopy WHERE id=" + id;
         ResultSet rs = statement.executeQuery(sql);
-        BookCopy bookCopy = new BookCopy();
         rs.next();
-        bookCopy.id = rs.getInt("id");
-        bookCopy.publisherBookId = rs.getInt("publisherbook_id");
-        bookCopy.stateId = rs.getInt("state_id");
-        bookCopy.description = rs.getString("description");
-        bookCopy.signature = rs.getLong("signature");
+        BookCopy bookCopy = getBookCopy(rs);
         return bookCopy;
     }
 
@@ -75,15 +75,23 @@ public class BookCopyRepository extends Repository{
         List<BookCopy> bookCopies = new ArrayList<>();
         ResultSet rs = statement.executeQuery(sql);
         while(rs.next()) {
-            BookCopy bookCopy = new BookCopy();
-            bookCopy.id = rs.getInt("id");
-            bookCopy.publisherBookId = rs.getInt("publisherbook_id");
-            bookCopy.stateId = rs.getInt("state_id");
-            bookCopy.description = rs.getString("description");
-            bookCopy.signature = rs.getLong("signature");
+            BookCopy bookCopy = getBookCopy(rs);
             bookCopies.add(bookCopy);
         }
         return bookCopies;
     }
 
+    private BookCopy getBookCopy(ResultSet rs) throws SQLException {
+        BookCopy bookCopy = new BookCopy();
+        bookCopy.id = rs.getInt("id");
+        bookCopy.publisherBookId = rs.getInt("publisherbook_id");
+        bookCopy.stateId = rs.getInt("state_id");
+        bookCopy.description = rs.getString("description");
+        BigDecimal signature = rs.getBigDecimal("signature");
+        if(signature != null)
+            bookCopy.signature = signature.longValue();
+        else
+            bookCopy.signature = null;
+        return bookCopy;
+    }
 }

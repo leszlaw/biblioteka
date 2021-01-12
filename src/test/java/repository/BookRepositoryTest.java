@@ -25,7 +25,7 @@ public class BookRepositoryTest {
                 .selectThatBeginWith("Pan Tadeusz","fajna książka").get(0);
         //then
         assertEquals(book.title,"Pan Tadeusz");
-        assertEquals(book.description,"fajna książka");
+        assertEquals("fajna książka",book.description);
 
     }
 

@@ -30,7 +30,7 @@ public class PublisherBookRepositoryTest {
         publisherBookRepository.save(publisherBook);
         //then
         List<PublisherBook> publisherBooks = publisherBookRepository.findByBookId(1);
-        assertEquals(publisherBooks.size(),2);
+        assertEquals(2,publisherBooks.size());
         assertEquals(publisherBooks.get(1).isbn.longValue(),1111111111111l);
     }
 
@@ -44,7 +44,7 @@ public class PublisherBookRepositoryTest {
         assertEquals(publisherBook.publisherId,1);
         assertEquals(publisherBook.img,"https://static4.redcart.pl/templates/images/thumb/7435/1500/1500/pl/0/templates/images/products/7435/526066f185eaac903d5d36fd4fbf83a7.jpg");
         assertEquals(publisherBook.pages.intValue(),10);
-        assertEquals(publisherBook.isbn.longValue(),1122222222222l);
+        assertEquals(1122222222222l,publisherBook.isbn.longValue());
     }
 
     @Test
@@ -53,9 +53,9 @@ public class PublisherBookRepositoryTest {
         PublisherBook publisherBook1 = publisherBookRepository.findById(2);
         publisherBook1.bookId=3;
         publisherBook1.publisherId=3;
-        publisherBook1.img="123";
-        publisherBook1.pages=1;
-        publisherBook1.isbn=1111111111111l;
+        publisherBook1.img=null;
+        publisherBook1.pages=null;
+        publisherBook1.isbn=null;
         //when
         publisherBookRepository.update(publisherBook1);
         //then
