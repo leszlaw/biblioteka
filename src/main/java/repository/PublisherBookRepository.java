@@ -35,7 +35,6 @@ public class PublisherBookRepository extends Repository{
         sb.append("" + publisherBook.bookId +"," + publisherBook.publisherId + ");");
 
         String sql = sb.toString();
-        System.out.println(sql);
         statement.execute(sql);
     }
 
@@ -46,6 +45,7 @@ public class PublisherBookRepository extends Repository{
 
         if(publisherBook.img != null)
             sb.append(", img =\"" + publisherBook.img + "\"");
+
         else
             sb.append(", img = NULL");
         if(publisherBook.pages != null)

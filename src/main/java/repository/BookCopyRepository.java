@@ -94,5 +94,4 @@ public class BookCopyRepository extends Repository{
             bookCopy.signature = null;
         return bookCopy;
     }
-
 }
