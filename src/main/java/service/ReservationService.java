@@ -1,7 +1,6 @@
-package main.service;
+package main.java.service;
 
 import main.java.model.*;
-import main.java.repository.OpinionRepository;
 import main.java.repository.ReservationRepository;
 
 import java.sql.SQLException;

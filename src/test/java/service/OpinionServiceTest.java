@@ -1,11 +1,11 @@
-package test.java.repository;
+package test.java.service;
 
 import main.java.factory.TestStatementBuilder;
 import main.java.model.Book;
 import main.java.model.Opinion;
 import main.java.model.User;
 import main.java.repository.OpinionRepository;
-import main.service.OpinionService;
+import main.java.service.OpinionService;
 import org.junit.Test;
 
 import java.sql.SQLException;
@@ -31,7 +31,7 @@ public class OpinionServiceTest {
         user.id = 1;
         user.name = "Imie";
         user.lastName = "Nazwisko";
-        user.date = "1000-10-10";
+        user.birthDate = "1000-10-10";
         user.authId = 999;
         user.contactId = 999;
         user.addressId = 999;
@@ -64,7 +64,7 @@ public class OpinionServiceTest {
         user.id = 1;
         user.name = "Imie";
         user.lastName = "Nazwisko";
-        user.date = "1000-10-10";
+        user.birthDate = "1000-10-10";
         user.authId = 999;
         user.contactId = 999;
         user.addressId = 999;
@@ -110,7 +110,7 @@ public class OpinionServiceTest {
         user.id = 4;
         user.name = "Imie";
         user.lastName = "Nazwisko";
-        user.date = "1000-10-10";
+        user.birthDate = "1000-10-10";
         user.authId = 999;
         user.contactId = 999;
         user.addressId = 999;
@@ -137,7 +137,7 @@ public class OpinionServiceTest {
         user.id = 2;
         user.name = "Imie";
         user.lastName = "Nazwisko";
-        user.date = "1000-10-10";
+        user.birthDate = "1000-10-10";
         user.authId = 999;
         user.contactId = 999;
         user.addressId = 999;

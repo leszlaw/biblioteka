@@ -1,4 +1,4 @@
-package main.service;
+package main.java.service;
 
 import main.java.model.Book;
 import main.java.model.Opinion;

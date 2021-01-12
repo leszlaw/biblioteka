@@ -42,7 +42,7 @@ public class AddressRepository extends Repository{
         if(address.street != null)
             sb.append("street LIKE \"" + address.street + "%\" AND ");
         if(address.number != null)
-            sb.append("number =" + address.number + " AND ");
+            sb.append("_number =" + address.number + " AND ");
         sb.append("house_number LIKE \"" + address.houseNumber + "%\"");
         sql = sb.toString();
         ResultSet rs = statement.executeQuery(sql);
@@ -51,7 +51,7 @@ public class AddressRepository extends Repository{
     }
 
     public Address findByUserId(int userId) throws SQLException {
-        String sql = "SELECT Address.id, Address.town, Address.streed, Address.number, Address.house_number " +
+        String sql = "SELECT Address.id, Address.town, Address.street, Address._number, Address.house_number " +
                 "FROM _User INNER JOIN ADDRESS ON _User.address_id = Address.id WHERE " +
                 "_User.id = " + userId + ";";
         ResultSet rs = statement.executeQuery(sql);

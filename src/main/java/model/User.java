@@ -2,14 +2,28 @@ package main.java.model;
 
 public class User {
 	
-	public int id;
+	public Integer id;
 	public String name;
 	public String lastName;
-	public String date;
+	public String birthDate;
 	public int authId;
 	public int contactId;
 	public int addressId;
 	public int roleId;
+
+	public User(Integer id, String name, String lastName, String birthDate, int authId, int contactId, int addressId, int roleId) {
+		this.id = id;
+		this.name = name;
+		this.lastName = lastName;
+		this.birthDate = birthDate;
+		this.authId = authId;
+		this.contactId = contactId;
+		this.addressId = addressId;
+		this.roleId = roleId;
+	}
+
+	public User(){
+	}
 
 	@Override
 	public String toString() {
@@ -17,7 +31,7 @@ public class User {
 				"id=" + id +
 				", name='" + name + '\'' +
 				", lastName='" + lastName + '\'' +
-				", date='" + date + '\'' +
+				", birthDate='" + birthDate + '\'' +
 				", authId=" + authId +
 				", contactId=" + contactId +
 				", addressId=" + addressId +
