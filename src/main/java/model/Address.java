@@ -5,7 +5,7 @@ public class Address {
 	public int id;
 	public String town;
 	public String street;
-	public int number;
+	public Integer number;
 	public String houseNumber;
 
 	@Override
