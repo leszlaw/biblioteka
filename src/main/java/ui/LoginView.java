@@ -12,12 +12,12 @@ public class LoginView {
     JFrame frame;
     JPanel panel;
 
-    JLabel userLabel = new JLabel("User");
-    JTextField userText = new JTextField(20);
-    JLabel passwordLabel = new JLabel("Password");
-    JPasswordField passwordText = new JPasswordField(20);
-    JButton loginButton = new JButton("login");
-    JButton registerButton = new JButton("register");
+    JLabel userLabel;
+    JTextField userText;
+    JLabel passwordLabel;
+    JPasswordField passwordText;
+    JButton loginButton;
+    JButton registerButton;
 
     CustomerController cc = CustomerController.istance;
 
@@ -72,14 +72,16 @@ public class LoginView {
         loginButton.addActionListener(e -> {
             try {
                 User user = cc.login(userText.getText(),passwordText.getText());
+                frame.dispose();
                 JOptionPane.showMessageDialog(frame,user.name);
             } catch (SQLException e1) {
                 JOptionPane.showMessageDialog(frame,"Niepoprawny login!");
             } catch (AuthException e2){
                 JOptionPane.showMessageDialog(frame,e2.getMessage());
             }
-
-
+        });
+        registerButton.addActionListener(e -> {
+            new RegisterView();
         });
 
     }
