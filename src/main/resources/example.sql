@@ -115,11 +115,11 @@ INSERT INTO Book_BookType VALUES (3,3);
 INSERT INTO Book_BookType VALUES (4,4);
 INSERT INTO Book_BookType VALUES (5,5);
 
-INSERT INTO PublisherBook VALUES (1,1,1,'https://static4.redcart.pl/templates/images/thumb/7435/1500/1500/pl/0/templates/images/products/7435/526066f185eaac903d5d36fd4fbf83a7.jpg',10,1122222222222);
-INSERT INTO PublisherBook VALUES (2,2,2,'https://static4.redcart.pl/templates/images/thumb/7435/1500/1500/pl/0/templates/images/products/7435/526066f185eaac903d5d36fd4fbf83a7.jpg',NULL,10);
-INSERT INTO PublisherBook VALUES (3,3,3,'https://static4.redcart.pl/templates/images/thumb/7435/1500/1500/pl/0/templates/images/products/7435/526066f185eaac903d5d36fd4fbf83a7.jpg',10,NULL);
-INSERT INTO PublisherBook VALUES (4,4,4,'https://static4.redcart.pl/templates/images/thumb/7435/1500/1500/pl/0/templates/images/products/7435/526066f185eaac903d5d36fd4fbf83a7.jpg',10,100);
-INSERT INTO PublisherBook VALUES (5,5,5,'https://static4.redcart.pl/templates/images/thumb/7435/1500/1500/pl/0/templates/images/products/7435/526066f185eaac903d5d36fd4fbf83a7.jpg',1000,10);
+INSERT INTO PublisherBook VALUES (1,1,1,'images/book1.jpg',10,1122222222222);
+INSERT INTO PublisherBook VALUES (2,2,2,'images/book1.jpg',NULL,10);
+INSERT INTO PublisherBook VALUES (3,3,3,'images/book1.jpg',10,NULL);
+INSERT INTO PublisherBook VALUES (4,4,4,'images/book1.jpg',10,100);
+INSERT INTO PublisherBook VALUES (5,5,5,'images/book1.jpg',1000,10);
 
 INSERT INTO BookCopy(id, publisherbook_id, state_id, description, signature) VALUES(1, 1, 1, 'opis1', 1111111111);
 INSERT INTO BookCopy(id, publisherbook_id, state_id, description, signature) VALUES(2, 2, 2, 'opis2', 1231231231);

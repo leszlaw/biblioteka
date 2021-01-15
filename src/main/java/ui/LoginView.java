@@ -73,7 +73,7 @@ public class LoginView {
             try {
                 User user = cc.login(userText.getText(),passwordText.getText());
                 frame.dispose();
-                JOptionPane.showMessageDialog(frame,user.name);
+                new MainPageView();
             } catch (SQLException e1) {
                 JOptionPane.showMessageDialog(frame,"Niepoprawny login!");
             } catch (AuthException e2){

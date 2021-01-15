@@ -42,7 +42,6 @@ public class PublisherBookRepositoryTest {
         assertEquals(publisherBook.id,1);
         assertEquals(publisherBook.bookId,1);
         assertEquals(publisherBook.publisherId,1);
-        assertEquals(publisherBook.img,"https://static4.redcart.pl/templates/images/thumb/7435/1500/1500/pl/0/templates/images/products/7435/526066f185eaac903d5d36fd4fbf83a7.jpg");
         assertEquals(publisherBook.pages.intValue(),10);
         assertEquals(1122222222222l,publisherBook.isbn.longValue());
     }
