@@ -121,42 +121,35 @@ public class MainPageView extends JFrame{
             });
         }
 
-        model.addListDataListener(new ListDataListener() {
-            @Override
-            public void intervalAdded(ListDataEvent e) {
-
-            }
-
-            @Override
-            public void intervalRemoved(ListDataEvent e) {
-
-            }
-
-            @Override
-            public void contentsChanged(ListDataEvent e) {
-
-            }
-        });
-
         listBook.addListSelectionListener(e -> {
 
             if(!antyRepeat) {
                 if (old == e.getFirstIndex()) {
                     old = e.getLastIndex();
-                    BookDTO bookDTO = model.getElementAt(old);
-                    try {
-                        Book book = cc.getByDTO(bookDTO);
-                        new OpinionView(book, user);
-                    } catch (SQLException throwables) {
+                    if(model.size() > old) {
+                        BookDTO bookDTO = model.getElementAt(old);
+                        try {
+                            Book book = cc.getByDTO(bookDTO);
+                            if (user.roleId == 2)
+                                new OpinionView(book, user);
+                            else
+                                new PublisherBookView(book);
+                        } catch (SQLException throwables) {
+                        }
                     }
                     antyRepeat = true;
                 } else {
                     old = e.getFirstIndex();
-                    BookDTO bookDTO = model.getElementAt(old);
-                    try {
-                        Book book = cc.getByDTO(bookDTO);
-                        new OpinionView(book, user);
-                    } catch (SQLException throwables) {
+                    if(model.size() > old) {
+                        BookDTO bookDTO = model.getElementAt(old);
+                        try {
+                            Book book = cc.getByDTO(bookDTO);
+                            if (user.roleId == 2)
+                                new OpinionView(book, user);
+                            else
+                                new PublisherBookView(book);
+                        } catch (SQLException throwables) {
+                        }
                     }
                     antyRepeat = true;
                 }

@@ -54,7 +54,6 @@ public class OpinionView {
     Border border;
     Border border_2;
 
-
     Controller cc = Controller.istance;
 
     List<Opinion> opinie;

@@ -28,7 +28,7 @@ public class HireRepositoryTest {
         //when
         hireRepository.save(hire);
         //then
-        Hire actual = hireRepository.findWhereDeliveryDateIsNullAndBy(3,4).get(0);
+        Hire actual = hireRepository.findWhereDeliveryDateIsNullAndBy(null,4).get(0);
         hire.id=actual.id;
         assertEquals(hire.toString(),actual.toString());
     }

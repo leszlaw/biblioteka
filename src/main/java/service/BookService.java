@@ -1,12 +1,8 @@
 package main.java.service;
 
-import main.java.model.Author;
-import main.java.model.Book;
-import main.java.model.PublisherBook;
+import main.java.model.*;
 import main.java.model.dto.BookDTO;
-import main.java.repository.AuthorRepository;
-import main.java.repository.BookRepository;
-import main.java.repository.PublisherBookRepository;
+import main.java.repository.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,11 +13,26 @@ public class BookService {
     private BookRepository bookRepository;
     private AuthorRepository authorRepository;
     private PublisherBookRepository publisherBookRepository;
+    private BookCopyRepository bookCopyRepository;
+    private HireRepository hireRepository;
+    private StateRepository stateRepository;
+    private ReservationRepository reservationRepository;
+    private OpinionRepository opinionRepository;
+    private BookTypeRepository bookTypeRepository;
 
-    public BookService(BookRepository bookRepository, AuthorRepository authorRepository, PublisherBookRepository publisherBookRepository) {
+    public BookService(BookRepository bookRepository, AuthorRepository authorRepository
+            , PublisherBookRepository publisherBookRepository, BookCopyRepository bookCopyRepository, HireRepository hireRepository
+            ,StateRepository stateRepository, ReservationRepository reservationRepository,OpinionRepository opinionRepository
+            ,BookTypeRepository bookTypeRepository) {
         this.bookRepository = bookRepository;
         this.authorRepository = authorRepository;
         this.publisherBookRepository = publisherBookRepository;
+        this.bookCopyRepository=bookCopyRepository;
+        this.hireRepository=hireRepository;
+        this.stateRepository=stateRepository;
+        this.reservationRepository = reservationRepository;
+        this.opinionRepository=opinionRepository;
+        this.bookTypeRepository=bookTypeRepository;
     }
 
     public List<BookDTO> getBooks(String title) throws SQLException {
@@ -71,6 +82,30 @@ public class BookService {
         book = bookRepository.selectThatBeginWith(book.title,book.description).get(0);
         authorRepository.giveBookToAuthorById(book.id,author.id);
 
+    }
+
+    public void addPublisherBook(PublisherBook publisherBook) throws SQLException {
+        publisherBook.publisherId=1;
+        publisherBookRepository.save(publisherBook);
+    }
+
+    public void deleteBook(Book book) throws SQLException {
+        for(PublisherBook publisherBook:publisherBookRepository.findByBookId(book.id)){
+            for(BookCopy bookCopy:bookCopyRepository.findByPublisherBookId(publisherBook.id)) {
+                for(Hire hire:hireRepository.selectByBookCopyId(bookCopy.id))
+                    hireRepository.removeById(hire.id);
+                for(Reservation reservation:reservationRepository.findWithValues(bookCopy))
+                    reservationRepository.remove(reservation);
+                bookCopyRepository.removeById(bookCopy.id);
+            }
+            publisherBookRepository.removeById(publisherBook.id);
+        }
+        for(Opinion opinion:opinionRepository.findByBookId(book.id))
+            opinionRepository.remove(opinion);
+        for(Author author:authorRepository.findByBookId(book.id))
+            authorRepository.removeById(author.id);
+        bookTypeRepository.removeByBookId(book.id);
+        bookRepository.removeById(book.id);
     }
 
 }

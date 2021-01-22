@@ -25,7 +25,11 @@ public class HireRepository extends Repository{
             sb.append("NULL,");
         sb.append(hire.userId + "," + hire.bookCopyId + ");");
         sql = sb.toString();
-        System.out.println(sql);
+        statement.execute(sql);
+    }
+
+    public void removeById(int id) throws SQLException {
+        String sql = "DELETE FROM Hire WHERE id = " + id +";";
         statement.execute(sql);
     }
 
@@ -55,5 +59,23 @@ public class HireRepository extends Repository{
         return hires;
     }
 
+    public List<Hire> selectByBookCopyId(int id) throws SQLException {
+        String sql = "SELECT * FROM Hire WHERE bookcopy_id = " + id +";";
+        ResultSet rs = statement.executeQuery(sql);
+        List<Hire> hires = new ArrayList<>();
+        while(rs.next()){
+            Hire hire = new Hire();
+            hire.id = rs.getInt("id");
+            hire.returnDate = rs.getDate("return_date").toString();
+            hire.hireDate = rs.getDate("hire_date").toString();
+            Date delivery_date = rs.getDate("delivery_date");
+            if(delivery_date != null)
+                hire.deliveryDate = delivery_date.toString();
+            hire.userId = rs.getInt("user_id");
+            hire.bookCopyId = rs.getInt("bookcopy_id");
+            hires.add(hire);
+        }
+        return hires;
+    }
 
 }

@@ -68,7 +68,7 @@ public class PublisherBookRepository extends Repository{
 
         String sql = "DELETE FROM PublisherBook WHERE id = "+ id;
 
-        statement.executeQuery(sql);
+        statement.execute(sql);
 
     }
 

@@ -28,6 +28,11 @@ public class AuthorRepository extends Repository{
         return authors;
     }
 
+    public void removeById(int id) throws SQLException {
+        String sql="DELETE FROM Book_Author WHERE author_id = "+ id +";";
+        statement.execute(sql);
+    }
+
     public List<Author> findByNameAndLastName(String name,String lastName) throws SQLException {
         String sql = "SELECT * FROM Author WHERE name LIKE \"" + name + "%\" " +
                 "AND last_name LIKE \"" + lastName + "%\";";
