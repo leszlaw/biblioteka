@@ -1,12 +1,18 @@
 package main.java.ui;
 
 import main.java.controller.Controller;
+import main.java.model.Book;
 import main.java.model.User;
 import main.java.model.dto.BookDTO;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListDataEvent;
+import javax.swing.event.ListDataListener;
 import java.awt.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyVetoException;
+import java.beans.VetoableChangeListener;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -16,10 +22,14 @@ public class MainPageView extends JFrame{
     private JList<BookDTO> listBook;
     DefaultListModel<BookDTO> model;
 
+    int old=0;
+    boolean antyRepeat=false;
+
     JButton searchButton;
     JTextField searchText;
 
     JButton addNewBook;
+    JScrollPane pane;
 
     JPanel panel1;
     JPanel panel2;
@@ -49,7 +59,8 @@ public class MainPageView extends JFrame{
         panel1 = new JPanel(new BorderLayout());
         panel1.setBorder(new EmptyBorder(10, 10, 10, 10));
         // create list book and set to scrollpane and add to panel
-        panel1.add(new JScrollPane(listBook = createListBooks()),
+        pane = new JScrollPane(listBook = createListBooks());
+        panel1.add(pane,
                 BorderLayout.CENTER);
         return panel1;
     }
@@ -102,9 +113,55 @@ public class MainPageView extends JFrame{
             }
         });
 
-        addNewBook.addActionListener(e -> {
+        if(user.roleId == 1) {
+            addNewBook.addActionListener(e -> {
 
-            new AddBookView();
+                new AddBookView();
+
+            });
+        }
+
+        model.addListDataListener(new ListDataListener() {
+            @Override
+            public void intervalAdded(ListDataEvent e) {
+
+            }
+
+            @Override
+            public void intervalRemoved(ListDataEvent e) {
+
+            }
+
+            @Override
+            public void contentsChanged(ListDataEvent e) {
+
+            }
+        });
+
+        listBook.addListSelectionListener(e -> {
+
+            if(!antyRepeat) {
+                if (old == e.getFirstIndex()) {
+                    old = e.getLastIndex();
+                    BookDTO bookDTO = model.getElementAt(old);
+                    try {
+                        Book book = cc.getByDTO(bookDTO);
+                        new OpinionView(book, user);
+                    } catch (SQLException throwables) {
+                    }
+                    antyRepeat = true;
+                } else {
+                    old = e.getFirstIndex();
+                    BookDTO bookDTO = model.getElementAt(old);
+                    try {
+                        Book book = cc.getByDTO(bookDTO);
+                        new OpinionView(book, user);
+                    } catch (SQLException throwables) {
+                    }
+                    antyRepeat = true;
+                }
+            }else
+                antyRepeat = false;
 
         });
 

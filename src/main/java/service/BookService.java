@@ -36,7 +36,7 @@ public class BookService {
             if(authorRepository.findByBookId(b.id).size()>0)
                 a=authorRepository.findByBookId(b.id).get(0);
             PublisherBook pb = new PublisherBook();
-            pb.img = "images/book1.jpg";
+            pb.img = "images/notFound.jpg";
             if(publisherBookRepository.findByBookId(b.id).size()>0)
                 pb = publisherBookRepository.findByBookId(b.id).get(0);
             bookDTO.title=b.title;

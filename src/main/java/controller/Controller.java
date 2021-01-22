@@ -4,6 +4,7 @@ import main.java.factory.LocalStatementBuilder;
 import main.java.model.Book;
 import main.java.model.User;
 import main.java.model.dto.BookDTO;
+import main.java.model.dto.UserDTO;
 import main.java.repository.*;
 import main.java.service.AuthService;
 import main.java.service.BookService;
@@ -20,16 +21,20 @@ public class Controller {
 
     private AuthService authService;
     private BookService bookService;
+    private BookRepository bookRepository;
 
     public Controller() {
         createServices();
     }
 
     private void createServices(){
-        BookRepository bookRepository = new BookRepository(statement);
+        bookRepository = new BookRepository(statement);
         AuthorRepository authorRepository = new AuthorRepository(statement);
         PublisherBookRepository publisherBookRepository = new PublisherBookRepository(statement);
-        authService = new AuthService(new UserRepository(statement),new UserAuthenticationRepository(statement));
+        ContactRepository contactRepository = new ContactRepository(statement);
+        AddressRepository addressRepository = new AddressRepository(statement);
+        authService = new AuthService(new UserRepository(statement),new UserAuthenticationRepository(statement)
+                ,contactRepository,addressRepository);
         bookService = new BookService(bookRepository,authorRepository,publisherBookRepository);
     }
 
@@ -43,6 +48,16 @@ public class Controller {
 
     public void addNewBook(BookDTO book) throws SQLException {
         bookService.addNewBook(book);
+    }
+
+    public void addNewUser(UserDTO userDTO) throws SQLException {
+
+        authService.register(userDTO);
+
+    }
+
+    public Book getByDTO(BookDTO bookDTO) throws SQLException {
+        return bookRepository.selectThatBeginWith(bookDTO.title,bookDTO.description).get(0);
     }
 
 }

@@ -95,6 +95,7 @@ public class OpinionView {
         JScrollPane scrollPane = new JScrollPane(panel);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         scrollPane.setBounds(50, 30, 800, 800);
 
         JPanel contentPane = new JPanel(null);

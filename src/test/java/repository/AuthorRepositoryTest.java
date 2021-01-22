@@ -29,10 +29,10 @@ public class AuthorRepositoryTest{
     }
 
     @Test
-    public void shouldFind_NicolaTesla_ByNameAndLastName() throws SQLException {
-        List<Author> authors = authorRepository.findByNameAndLastName("Ni", "Te");
-        assertEquals(authors.get(0).name,"Nicola");
-        assertEquals("Tesla",authors.get(0).lastName);
+    public void shouldFind_AdamMickiewicz_ByNameAndLastName() throws SQLException {
+        List<Author> authors = authorRepository.findByNameAndLastName("Adam", "Mic");
+        assertEquals(authors.get(0).name,"Adam");
+        assertEquals("Mickiewicz",authors.get(0).lastName);
     }
 
 }

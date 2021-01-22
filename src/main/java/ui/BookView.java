@@ -37,15 +37,15 @@ public class BookView extends JPanel implements ListCellRenderer<BookDTO> {
         try {
             lbIcon.setIcon(new ImageIcon(getClass().getResource("/" + book.img)));
         }catch (Exception e){
-            lbIcon.setIcon(new ImageIcon(getClass().getResource("/images/book1.jpg")));
+            lbIcon.setIcon(new ImageIcon(getClass().getResource("/images/notFound.jpg")));
         }
-        lbName.setText(book.title);
-        lbAuthor.setText(book.authorName + " " + book.authorLastName);
-        lbAuthor.setForeground(Color.blue);
+            lbName.setText(book.title);
+            lbAuthor.setText(book.authorName + " " + book.authorLastName);
+            lbAuthor.setForeground(Color.blue);
 
-        lbName.setOpaque(true);
-        lbAuthor.setOpaque(true);
-        lbIcon.setOpaque(true);
+            lbName.setOpaque(true);
+            lbAuthor.setOpaque(true);
+            lbIcon.setOpaque(true);
 
         // when select item
         if (isSelected) {

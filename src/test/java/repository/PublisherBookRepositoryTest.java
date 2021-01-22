@@ -50,9 +50,8 @@ public class PublisherBookRepositoryTest {
     public void shouldUpdatePublisherBook() throws SQLException {
         //given
         PublisherBook publisherBook1 = publisherBookRepository.findById(2);
-        publisherBook1.bookId=3;
-        publisherBook1.publisherId=3;
-        publisherBook1.img=null;
+        publisherBook1.bookId=2;
+        publisherBook1.publisherId=2;
         publisherBook1.pages=null;
         publisherBook1.isbn=null;
         //when

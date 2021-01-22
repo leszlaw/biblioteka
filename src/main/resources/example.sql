@@ -84,11 +84,12 @@ VALUES (9, 'horror');
 INSERT INTO BookType( id, type)
 VALUES (10, 'literatura młodzieżowa');
 
-INSERT INTO Author VALUES (1,'Adam','Żuk');
-INSERT INTO Author VALUES (2,'Nicola','Tesla');
-INSERT INTO Author VALUES (3,'Albert','Einstein');
-INSERT INTO Author VALUES (4,'Elon','Musk');
-INSERT INTO Author VALUES (5,'Rhoshandiatellyneshiaunneveshenk','Williams');
+INSERT INTO Author VALUES (1,'Adam','Mickiewicz');
+INSERT INTO Author VALUES (2,'Jan','Brzechwa');
+INSERT INTO Author VALUES (3,'Witold','Gombrowicz');
+INSERT INTO Author VALUES (4,'Henryk','Sienkiewicz');
+INSERT INTO Author VALUES (5,'Bolesław','Prus');
+INSERT INTO Author VALUES (6,'Rhoshandiatellyneshiaunneveshenk','Williams');
 
 INSERT INTO State VALUES (1,'zły');
 INSERT INTO State VALUES (2,'średni');
@@ -97,17 +98,19 @@ INSERT INTO State VALUES (4,'bardzo dobry');
 INSERT INTO State VALUES (5,'nowy');
 
 INSERT INTO Book VALUES (1,'Pan Tadeusz','fajna książka','1000-01-01');
-INSERT INTO Book VALUES (2,'Pan Pomidor',NULL,NULL);
+INSERT INTO Book VALUES (2,'Pan Pomidor','zrobil sie czerwony','1000-01-01');
 INSERT INTO Book VALUES (3,'Ferdydurke','Gombrowicz to geniusz','1001-01-01');
 INSERT INTO Book VALUES (4,'Krzyżacy','fajna książka','1001-01-10');
 INSERT INTO Book VALUES (5,'Lalka','fajna książka','1001-01-11');
-INSERT INTO Book VALUES (6,'Wojna','wojna','1001-01-11');
+INSERT INTO Book VALUES (6,'Dzieci z bullerbyn','ksiazka dla dzieci','1001-01-11');
+INSERT INTO Book VALUES (7,'Wojna','wojna','1001-01-11');
 
 INSERT INTO Book_Author VALUES (1,1);
 INSERT INTO Book_Author VALUES (2,2);
 INSERT INTO Book_Author VALUES (3,3);
 INSERT INTO Book_Author VALUES (4,4);
 INSERT INTO Book_Author VALUES (5,5);
+INSERT INTO Book_Author VALUES (6,6);
 
 INSERT INTO Book_BookType VALUES (1,1);
 INSERT INTO Book_BookType VALUES (2,2);
@@ -115,11 +118,12 @@ INSERT INTO Book_BookType VALUES (3,3);
 INSERT INTO Book_BookType VALUES (4,4);
 INSERT INTO Book_BookType VALUES (5,5);
 
-INSERT INTO PublisherBook VALUES (1,1,1,'images/book1.jpg',10,1122222222222);
-INSERT INTO PublisherBook VALUES (2,2,2,'images/book1.jpg',NULL,10);
-INSERT INTO PublisherBook VALUES (3,3,3,'images/book1.jpg',10,NULL);
-INSERT INTO PublisherBook VALUES (4,4,4,'images/book1.jpg',10,100);
-INSERT INTO PublisherBook VALUES (5,5,5,'images/book1.jpg',1000,10);
+INSERT INTO PublisherBook VALUES (1,1,1,'images/pan_tadeusz.jpg',10,1122222222222);
+INSERT INTO PublisherBook VALUES (2,2,2,'images/pan_pomidor.jpg',NULL,10);
+INSERT INTO PublisherBook VALUES (3,3,3,'images/ferdydurke.jpg',10,NULL);
+INSERT INTO PublisherBook VALUES (4,4,4,'images/krzyzacy.jpg',10,100);
+INSERT INTO PublisherBook VALUES (5,5,5,'images/lalka.jpg',1000,10);
+INSERT INTO PublisherBook VALUES (6,6,5,'images/dzieci_z_bullerbyn.jpg',1000,10);
 
 INSERT INTO BookCopy(id, publisherbook_id, state_id, description, signature) VALUES(1, 1, 1, 'opis1', 1111111111);
 INSERT INTO BookCopy(id, publisherbook_id, state_id, description, signature) VALUES(2, 2, 2, 'opis2', 1231231231);
