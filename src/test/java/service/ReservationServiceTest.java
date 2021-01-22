@@ -43,7 +43,7 @@ public class ReservationServiceTest {
         bookCopy1.signature = 9999999999l;
 
         Reservation reservation = new Reservation();
-        reservation.date = LocalDate.now().toString();;
+        reservation.date = LocalDate.now().toString();
         reservation.userId = 3;
         reservation.bookCopyId = 1;
         //when
