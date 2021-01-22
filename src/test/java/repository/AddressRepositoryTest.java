@@ -1,6 +1,6 @@
 package test.java.repository;
 
-import main.java.factory.TestStatementBuilder;
+import main.java.factory.LocalStatementBuilder;
 import main.java.model.Address;
 import main.java.repository.AddressRepository;
 import org.junit.Test;
@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class AddressRepositoryTest {
 
-    final Statement statement = TestStatementBuilder.getInstance().createStatement();
+    final Statement statement = LocalStatementBuilder.getTestInstance().createStatement();
 
     final AddressRepository addressRepository =
             new AddressRepository(statement);

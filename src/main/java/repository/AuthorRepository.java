@@ -16,7 +16,7 @@ public class AuthorRepository extends Repository{
 
     public void save(Author author) throws SQLException {
         String sql = "INSERT INTO Author(name,last_name) " +
-                "VALUES(" + author.name + "," + author.lastName + ");";
+                "VALUES(\"" + author.name + "\",\"" + author.lastName + "\");";
         statement.execute(sql);
     }
 

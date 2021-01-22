@@ -8,9 +8,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class TestStatementBuilder implements StatementBuilder{
+public class LocalStatementBuilder implements StatementBuilder{
 
-    private static TestStatementBuilder istance = null;
+    private static LocalStatementBuilder istance = null;
 
     private String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private String DB_URL = "jdbc:mysql://localhost:3306/biblioteka?serverTimezone=UTC";
@@ -20,13 +20,11 @@ public class TestStatementBuilder implements StatementBuilder{
 
     private Connection connection;
 
-    public TestStatementBuilder() {
+    public LocalStatementBuilder() {
 
         try {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DB_URL, USER, PASS);
-
-            resetDatabase();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -34,7 +32,7 @@ public class TestStatementBuilder implements StatementBuilder{
 
     }
 
-    private void resetDatabase() throws IOException, SQLException {
+    public void resetDatabase() throws IOException, SQLException {
         ScriptRunner runner=new ScriptRunner(connection, false, false);
         InputStreamReader reader1 = new InputStreamReader(new FileInputStream("./src/main/resources/delete.sql"));
         InputStreamReader reader2 = new InputStreamReader(new FileInputStream("./src/main/resources/table.sql"));
@@ -62,9 +60,24 @@ public class TestStatementBuilder implements StatementBuilder{
         return null;
     }
 
-    public static TestStatementBuilder getInstance(){
-        if(istance==null)
-            istance = new TestStatementBuilder();
+    public static LocalStatementBuilder getTestInstance(){
+        if(istance==null) {
+            istance = new LocalStatementBuilder();
+            try {
+                istance.resetDatabase();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return istance;
+    }
+
+    public static LocalStatementBuilder getInstance(){
+        if(istance==null) {
+            istance = new LocalStatementBuilder();
+        }
         return istance;
     }
 

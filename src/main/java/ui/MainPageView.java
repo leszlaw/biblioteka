@@ -1,6 +1,7 @@
 package main.java.ui;
 
-import main.java.controller.CustomerController;
+import main.java.controller.Controller;
+import main.java.model.User;
 import main.java.model.dto.BookDTO;
 
 import javax.swing.*;
@@ -18,12 +19,17 @@ public class MainPageView extends JFrame{
     JButton searchButton;
     JTextField searchText;
 
+    JButton addNewBook;
+
     JPanel panel1;
     JPanel panel2;
 
-    CustomerController cc = CustomerController.istance;
+    private User user;
 
-    public MainPageView() {
+    Controller cc = Controller.istance;
+
+    public MainPageView(User user) {
+        this.user=user;
         JSplitPane splitPane = new JSplitPane();
         getContentPane().setLayout(new GridLayout());
         getContentPane().add(splitPane);
@@ -57,6 +63,7 @@ public class MainPageView extends JFrame{
     }
 
     private JPanel createControlPanel(){
+
         panel2 = new JPanel();
         panel2.setLayout(null);
         searchButton = new JButton("Szukaj");
@@ -66,7 +73,18 @@ public class MainPageView extends JFrame{
         searchText = new JTextField(20);
         searchText.setBounds(100, 10, 160, 25);
         panel2.add(searchText);
+
+        if(user.roleId==1)
+            createEmployeeComponents(panel2);
+
         return panel2;
+    }
+
+    private void createEmployeeComponents(JPanel panel) {
+        addNewBook = new JButton("Dodaj nowa ksiazke");
+        addNewBook.setBounds(10, 40, 200, 25);
+        panel2.add(addNewBook);
+
     }
 
     private void setListeners(){
@@ -82,6 +100,12 @@ public class MainPageView extends JFrame{
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
+        });
+
+        addNewBook.addActionListener(e -> {
+
+            new AddBookView();
+
         });
 
     }

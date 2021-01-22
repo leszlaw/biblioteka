@@ -34,9 +34,13 @@ public class BookView extends JPanel implements ListCellRenderer<BookDTO> {
     public Component getListCellRendererComponent(JList<? extends BookDTO> list,
                                                   BookDTO book, int index, boolean isSelected, boolean cellHasFocus) {
 
-        lbIcon.setIcon(new ImageIcon(getClass().getResource("/"+book.img)));
+        try {
+            lbIcon.setIcon(new ImageIcon(getClass().getResource("/" + book.img)));
+        }catch (Exception e){
+            lbIcon.setIcon(new ImageIcon(getClass().getResource("/images/book1.jpg")));
+        }
         lbName.setText(book.title);
-        lbAuthor.setText(book.author);
+        lbAuthor.setText(book.authorName + " " + book.authorLastName);
         lbAuthor.setForeground(Color.blue);
 
         lbName.setOpaque(true);

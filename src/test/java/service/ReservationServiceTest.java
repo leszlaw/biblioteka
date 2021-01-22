@@ -1,6 +1,6 @@
 package test.java.service;
 
-import main.java.factory.TestStatementBuilder;
+import main.java.factory.LocalStatementBuilder;
 import main.java.model.BookCopy;
 import main.java.model.Reservation;
 import main.java.model.User;
@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import static org.junit.Assert.*;
 
 public class ReservationServiceTest {
-    final Statement statement = TestStatementBuilder.getInstance().createStatement();
+    final Statement statement = LocalStatementBuilder.getTestInstance().createStatement();
 
     final ReservationRepository reservationRepository =
             new ReservationRepository(statement);

@@ -42,10 +42,35 @@ public class BookService {
             bookDTO.title=b.title;
             bookDTO.description=b.description;
             bookDTO.img=pb.img;
-            bookDTO.author=a.name + " " + a.lastName;
+            bookDTO.authorName=a.name;
+            bookDTO.authorLastName=a.lastName;
             bookDTOS.add(bookDTO);
         }
         return bookDTOS;
+    }
+
+    public void addNewBook(BookDTO bookDTO) throws SQLException {
+        Book book = new Book();
+        book.title = bookDTO.title;
+        book.description = bookDTO.description;
+        book.releaseDate = bookDTO.releaseDate;
+
+        Author author = new Author();
+        author.name = bookDTO.authorName;
+        author.lastName = bookDTO.authorLastName;
+
+        List<Author> authors = authorRepository.findByNameAndLastName(author.name,author.lastName);
+        if(authors.size()>0)
+            author = authors.get(0);
+        else {
+            authorRepository.save(author);
+            author = authorRepository.findByNameAndLastName(author.name,author.lastName).get(0);
+        }
+
+        bookRepository.save(book);
+        book = bookRepository.selectThatBeginWith(book.title,book.description).get(0);
+        authorRepository.giveBookToAuthorById(book.id,author.id);
+
     }
 
 }

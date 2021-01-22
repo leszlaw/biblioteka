@@ -1,6 +1,6 @@
 package main.java.ui;
 
-import main.java.controller.CustomerController;
+import main.java.controller.Controller;
 import main.java.exception.AuthException;
 import main.java.model.User;
 
@@ -19,7 +19,7 @@ public class LoginView {
     JButton loginButton;
     JButton registerButton;
 
-    CustomerController cc = CustomerController.istance;
+    Controller cc = Controller.istance;
 
     public LoginView() {
         createWindow();
@@ -73,7 +73,7 @@ public class LoginView {
             try {
                 User user = cc.login(userText.getText(),passwordText.getText());
                 frame.dispose();
-                new MainPageView();
+                new MainPageView(user);
             } catch (SQLException e1) {
                 JOptionPane.showMessageDialog(frame,"Niepoprawny login!");
             } catch (AuthException e2){

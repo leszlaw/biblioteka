@@ -1,6 +1,6 @@
 package main.java.controller;
 
-import main.java.factory.TestStatementBuilder;
+import main.java.factory.LocalStatementBuilder;
 import main.java.model.Book;
 import main.java.model.User;
 import main.java.model.dto.BookDTO;
@@ -12,16 +12,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-public class CustomerController {
+public class Controller {
 
-    public static CustomerController istance = new CustomerController();
+    public static Controller istance = new Controller();
 
-    Statement statement = TestStatementBuilder.getInstance().createStatement();
+    Statement statement = LocalStatementBuilder.getInstance().createStatement();
 
     private AuthService authService;
     private BookService bookService;
 
-    public CustomerController() {
+    public Controller() {
         createServices();
     }
 
@@ -39,6 +39,10 @@ public class CustomerController {
 
     public List<BookDTO> findBooks(String title) throws SQLException {
         return bookService.getBooks(title);
+    }
+
+    public void addNewBook(BookDTO book) throws SQLException {
+        bookService.addNewBook(book);
     }
 
 }
