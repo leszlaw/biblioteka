@@ -59,6 +59,15 @@ public class ContactRepository extends Repository{
         return contact;
     }
 
+    public int getIdOf(Contact contact) throws SQLException {
+        String sql = "SELECT id FROM Contact WHERE " +
+                "email = " + "\"" + contact.email + "\" AND " +
+                "phone = " + contact.phone +";";
+        ResultSet rs = statement.executeQuery(sql);
+        rs.next();
+        return rs.getInt("id");
+    }
+
     private Contact getContact(ResultSet rs) throws SQLException {
         rs.next();
         Contact contact = new Contact();

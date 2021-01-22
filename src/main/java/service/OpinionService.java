@@ -73,6 +73,30 @@ public class OpinionService {
         }
     }
 
+    public void createOpinionPlus(int rate, String opinionText, User user, Book book) throws SQLException {
+
+
+        List<Opinion> opinie = opinionRepository.findByBookId(book.id);
+
+        Opinion opinion = findOpinionByUserID(opinie, user.id);
+
+        if(opinion != null){
+            deleteOpinion(user, book);
+        }
+
+            Opinion newOpinion = new Opinion(
+                    -1,
+                    rate,
+                    opinionText,
+                    user.id,
+                    book.id
+            );
+
+
+
+            opinionRepository.save(newOpinion);
+    }
+
     public Opinion findOpinionByUserID(List<Opinion> opinie, int _userId){
         for(int i = 0; i < opinie.size(); i++){
             if(opinie.get(i).userId == _userId)

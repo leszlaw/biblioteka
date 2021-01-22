@@ -1,6 +1,6 @@
 package test.java.repository;
 
-import main.java.factory.TestStatementBuilder;
+import main.java.factory.LocalStatementBuilder;
 import main.java.model.User;
 import main.java.repository.UserRepository;
 import org.junit.Test;
@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class UserRepositoryTest {
 
-    final Statement statement = TestStatementBuilder.getInstance().createStatement();
+    final Statement statement = LocalStatementBuilder.getTestInstance().createStatement();
 
     final UserRepository userRepository =
             new UserRepository(statement);

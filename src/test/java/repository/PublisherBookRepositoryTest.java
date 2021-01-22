@@ -1,6 +1,6 @@
 package test.java.repository;
 
-import main.java.factory.TestStatementBuilder;
+import main.java.factory.LocalStatementBuilder;
 import main.java.model.PublisherBook;
 import main.java.repository.PublisherBookRepository;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 
 public class PublisherBookRepositoryTest {
 
-    final Statement statement = TestStatementBuilder.getInstance().createStatement();
+    final Statement statement = LocalStatementBuilder.getTestInstance().createStatement();
 
     final PublisherBookRepository publisherBookRepository = new PublisherBookRepository(statement);
 
@@ -42,7 +42,6 @@ public class PublisherBookRepositoryTest {
         assertEquals(publisherBook.id,1);
         assertEquals(publisherBook.bookId,1);
         assertEquals(publisherBook.publisherId,1);
-        assertEquals(publisherBook.img,"https://static4.redcart.pl/templates/images/thumb/7435/1500/1500/pl/0/templates/images/products/7435/526066f185eaac903d5d36fd4fbf83a7.jpg");
         assertEquals(publisherBook.pages.intValue(),10);
         assertEquals(1122222222222l,publisherBook.isbn.longValue());
     }
@@ -51,9 +50,8 @@ public class PublisherBookRepositoryTest {
     public void shouldUpdatePublisherBook() throws SQLException {
         //given
         PublisherBook publisherBook1 = publisherBookRepository.findById(2);
-        publisherBook1.bookId=3;
-        publisherBook1.publisherId=3;
-        publisherBook1.img=null;
+        publisherBook1.bookId=2;
+        publisherBook1.publisherId=2;
         publisherBook1.pages=null;
         publisherBook1.isbn=null;
         //when

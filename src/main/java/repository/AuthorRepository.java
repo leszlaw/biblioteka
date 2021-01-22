@@ -16,7 +16,7 @@ public class AuthorRepository extends Repository{
 
     public void save(Author author) throws SQLException {
         String sql = "INSERT INTO Author(name,last_name) " +
-                "VALUES(" + author.name + "," + author.lastName + ");";
+                "VALUES(\"" + author.name + "\",\"" + author.lastName + "\");";
         statement.execute(sql);
     }
 
@@ -26,6 +26,11 @@ public class AuthorRepository extends Repository{
                 "WHERE Book_Author.book_id = " + bookId + ";";
         List<Author> authors = getAuthors(sql);
         return authors;
+    }
+
+    public void removeById(int id) throws SQLException {
+        String sql="DELETE FROM Book_Author WHERE author_id = "+ id +";";
+        statement.execute(sql);
     }
 
     public List<Author> findByNameAndLastName(String name,String lastName) throws SQLException {

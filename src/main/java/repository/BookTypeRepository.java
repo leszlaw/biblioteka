@@ -33,6 +33,11 @@ public class BookTypeRepository extends Repository{
         statement.execute(sql);
     }
 
+    public void removeByBookId(int id) throws SQLException {
+        String sql = "DELETE FROM Book_BookType WHERE book_id=" + id +";";
+        statement.execute(sql);
+    }
+
     private List<BookType> getBookTypes(String sql) throws SQLException {
         ResultSet rs = statement.executeQuery(sql);
         List<BookType> bookTypes = new ArrayList<>();

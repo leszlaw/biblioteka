@@ -1,5 +1,5 @@
 package test.java.repository;
-import main.java.factory.TestStatementBuilder;
+import main.java.factory.LocalStatementBuilder;
 import main.java.model.BookType;
 import main.java.repository.BookTypeRepository;
 import org.junit.Test;
@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class BookTypeRepositoryTest {
 
-    final Statement statement = TestStatementBuilder.getInstance().createStatement();
+    final Statement statement = LocalStatementBuilder.getTestInstance().createStatement();
 
     final BookTypeRepository bookTypeRepository =
             new BookTypeRepository(statement);

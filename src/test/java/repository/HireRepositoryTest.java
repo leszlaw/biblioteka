@@ -1,6 +1,6 @@
 package test.java.repository;
 
-import main.java.factory.TestStatementBuilder;
+import main.java.factory.LocalStatementBuilder;
 import main.java.model.Hire;
 import main.java.repository.HireRepository;
 import org.junit.Test;
@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class HireRepositoryTest {
 
-    final Statement statement = TestStatementBuilder.getInstance().createStatement();
+    final Statement statement = LocalStatementBuilder.getTestInstance().createStatement();
 
     final HireRepository hireRepository =
             new HireRepository(statement);
@@ -28,7 +28,7 @@ public class HireRepositoryTest {
         //when
         hireRepository.save(hire);
         //then
-        Hire actual = hireRepository.findWhereDeliveryDateIsNullAndBy(3,4).get(0);
+        Hire actual = hireRepository.findWhereDeliveryDateIsNullAndBy(null,4).get(0);
         hire.id=actual.id;
         assertEquals(hire.toString(),actual.toString());
     }

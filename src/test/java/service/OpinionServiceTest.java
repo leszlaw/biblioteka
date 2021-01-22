@@ -1,6 +1,6 @@
 package test.java.service;
 
-import main.java.factory.TestStatementBuilder;
+import main.java.factory.LocalStatementBuilder;
 import main.java.model.Book;
 import main.java.model.Opinion;
 import main.java.model.User;
@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 public class OpinionServiceTest {
 
-    final Statement statement = TestStatementBuilder.getInstance().createStatement();
+    final Statement statement = LocalStatementBuilder.getTestInstance().createStatement();
 
     final OpinionRepository opinionRepository =
             new OpinionRepository(statement);
